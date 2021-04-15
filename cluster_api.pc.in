@@ -1,0 +1,11 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+libdir=@CMAKE_INSTALL_FULL_LIBDIR@
+
+Name: @TARGET_NAME@
+Description: cluster api library using ipc library
+Version: @CLUSTER_API_LIBRARY_VERSION@
+
+Requires: ipc
+Cflags: -I${includedir}
+Libs: -L${libdir} -lcluster_api
