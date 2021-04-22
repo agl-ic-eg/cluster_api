@@ -39,19 +39,19 @@ Enter command: ★(r)to run all test automatically ★(q)to End
     - include/
         - Set of external public headers
     - src/
-        - cluster_api Library implementation source
+        - cluster_api Library of implementation source
     - test/
         - client_test/
-            - Cluster API Test environment implementation source
+            - Cluster API Test environment of implementation source
 
-# Product Configuration
+# Build Configuration
 
-Product when executing ./buildtest.sh shows as follow:
+When ./buildtest.sh run, Build shows as follow:
 
 - cluster_api/
     - cmakeBuild/
         - src/
-            - The library of Cluster API as follow:
+            - The library of Cluster API as follows:
                 ```bash
                 libcluster_api.so -> libcluster_api.so.1
                 libcluster_api.so.1 -> libcluster_api.so.1.0.0
@@ -59,7 +59,7 @@ Product when executing ./buildtest.sh shows as follow:
                 ```
         - test/
             - client_test/
-                - Cluster API Test executing file
+                - Cluster API Test running files
                     ```bash
                     client_test
                     dummy_server
@@ -67,8 +67,8 @@ Product when executing ./buildtest.sh shows as follow:
 
 # Cluster API Implementation Content
 
-- I/F API functions for apps were implemented as shown in IC-Service_API_rev0.4.docx.
-- The main implementation process is to manage the data sent from the server for the IC-Service, and when the API is called from the application, only the relevant data is extracted from the managed data.
+- API function which becomes I/F for application Implemented according to IC-Service_API_rev0.4.docx.
+- The main implementation of the process is to manage the data sent from the IC-Service server. When calling API from the application, extract only the relevant data from the managed data.
 - In addition to IC-Service_API_rev0.4.docx, the following two APIs have been additionally implemented：
     - bool clusterInit(void)
         - Initialization process for using the Cluster API.
