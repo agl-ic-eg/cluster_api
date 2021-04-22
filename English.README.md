@@ -75,29 +75,29 @@ Product when executing ./buildtest.sh shows as follow:
         - This API connects to the server for IC-Service, so it is assumed that the server has already started.
         - Return a bool value with true if the operation was successful.
     - bool clusterTerm(void)
-        - Termination　Cluster API Process。
-        - IC-Service用サーバとの接続を切断するために使用。
-        - 処理成功時をtrueとしたbool値を返す。
-- アプリはcluster_api.hをincludeし、libcluster_api.soとリンクすることで、各種APIを呼び出すことが可能となる。
+        - Termination　Cluster API Process.
+        - Used to disconnect from the IC-Service server.
+        - Return a bool value with true if the operation was successful。
+- Apps can include cluster_api.h and link with libcluster_api.so to call various APIs.
 
-# client_test テスト内容
+# client_test Test content
 
-Cluster APIの各種APIに対する動作テストを実施する。構成は以下の通り。
+Perform operation tests for various APIs of Cluster API. The configuration is as follows：
 
-- テストは実行ファイルclient_testとdummy_serverの2つで構成される。
-    - client_test : Cluster APIテスト本体
-    - dummy_server : Cluster APIテストに使用する疑似IC-Serviceサーバ
-- テスト実行時はclient_testだけ実行すれば良い。
-- dummy_serverはclient_test内から自動で起動される。
-- dummy_serverの起動待ち、dummy_serverからの送信待ちについては10msecとしている。  
-  (別プロセスで非同期であることから、全く待ちがないと意図通りに動作しない)
-- client_testはCUnitを用いて実装した自動テストプログラムである。CUnitの仕様通り全項目テスト、単体項目テスト、いずれも可能である。
-- ※プロセス間通信のタイミングの関係上、稀にテストがFAILすることがある。  
-(テスト全156項目を20周繰り返して1項目FAILする程度)
+- The test consists of two executable files, client_test and dummy_server：
+    - client_test : Cluster API Test Body
+    - dummy_server : Mock IC-Service server for Cluster API testing
+- When running The test, only should run client_test.
+- dummy_server is automatically started within client_test.
+- The wait time for dummy_server to start and for dummy_server to send is 10 msec. 
+  (Since it is asynchronous with another process, it does not work as intended if there is no wait)
+- client_test is an automatic test program implemented using CUnit, All item tests and unit item test are both possible according to CUnit specifications.
+- ※In rare cases, a test may fail due to timing of inter-process communication.  
+(Test all 156 items 20 times, returnt 1 item FAIL)
 
-実施するテスト項目については以下の通り。
+The test items to be implemented are as follows：
 
-1. InitAndTerm (5項目)
+1. InitAndTerm (5 Items)
     - clusterInit()とclusterTerm()が意図通り動作することを確認する。
         - IC-Service用サーバが存在する状態でclusterInit()とclusterTerm()を順に呼ぶ時の動作を確認する(正常系)
         - APIの呼び出し順誤りでエラーになることを確認する。
@@ -105,22 +105,22 @@ Cluster APIの各種APIに対する動作テストを実施する。構成は以
             - clusterInit()後、clusterTerm()を2連続呼び出し。
             - clusterInit()を呼ばずにclusterTerm()を呼び出し。
         - IC-Service用サーバが存在しない状態でのclusterInit()呼び出しでエラーになることを確認する。
-2. Telltale (52項目)
+2. Telltale (52 Items)
     - IC-Service_API_rev0.4.docx の 3-4 Telltale に記載されている各種APIで意図通りの値が取得できることを確認する。
         - 各API 1パターンずつ実施。
-3. ShiftPosition (2項目)
+3. ShiftPosition (2 Items)
     - IC-Service_API_rev0.4.docx の 3-5 ShiftPosition に記載されている各種APIで意図通りの値が取得できることを確認する。
         - 各API 1パターンずつ実施。
-4. Speed (2項目)
+4. Speed (2 Items)
     - IC-Service_API_rev0.4.docx の 3-6 Speed に記載されている各種APIで意図通りの値が取得できることを確認する。
         - 各API 1パターンずつ実施。
-5. Tacho (1項目)
+5. Tacho (1 Item)
     - IC-Service_API_rev0.4.docx の 3-7 Tacho に記載されている各種APIで意図通りの値が取得できることを確認する。
         - 各API 1パターンずつ実施。
-6. TripComputer (20項目)
+6. TripComputer (20 Items)
     - IC-Service_API_rev0.4.docx の 3-8 TripComputer に記載されている各種APIで意図通りの値が取得できることを確認する。
         - 各API 1パターンずつ実施。
-7. RegisterAndNotify (74項目)
+7. RegisterAndNotify (74 Items)
     - IC-Service_API_rev0.4.docx の 3-9 Register/Notify にある registerIcHmi()の動作が意図通りであることを確認する。
         - 第1引数 arg_1 に IC_HMI_TT_ALL を指定した時のテスト。
             - 3-2-1 TellTaleに記載された34種のどのシグナルが変化してもコールバック関数が呼ばれることを確認する。
