@@ -78,7 +78,7 @@ When ./buildtest.sh run, Build shows as follow:
         - Termination　Cluster API Process.
         - Used to disconnect from the IC-Service server.
         - Return true bool value if processing successfully.
-- Applications include cluster_api.h, and link with libcluster_api.so can call every API.
+- Applications that include cluster_api.h and link with libcluster_api.so can call every API.
 
 # client_test Test content
 
@@ -127,12 +127,12 @@ Implementation of items test is as follows：
             - Verify that the callback function is not called if none of the 34 signals have changed as described in 3-2-1 TellTale.
             - Verify that the callback function is not called even if other signals than 34 signals have changed as described in 3-2-1 TellTale.
         -  In the 1st argument arg_1, If 0 assigned: Verify the callback function is not called even any of the 34 signals changed as described in 3-2-1 TellTale.
-        - In the 1st argument arg_1, if other flags than the following flags 3-2-1-1～3-2-1-34 are se: Verify the callback function is not called when any of the 34 signals changed as described in 3-2-1 TellTale.
+        - In the 1st argument arg_1, if other flags than the following flags 3-2-1-1～3-2-1-34 are set: Verify the callback function is not called when any of the 34 signals changed as described in 3-2-1 TellTale.
         - In the 2nd argument addr, if NULL assigned: Verify that an error occurs.
         - In the 1st argument arg_1, if 3-2-1-1～3-2-1-34 are assigned set values. The following two procedures are implemented:
-            - Verify that the callback function is called only when the signal corresponding to the specified flag is changed.
+            - Verify that the callback function is called only when the signal corresponding to the assigned flag is changed.
             - Verify that the callback function is not called; even the other 33 signals changed.
-        - In the 1st argument arg_1, if one flag from 3-2-1-1～3-2-1-34 are specified clear value. The following two procedures are implemented:
+        - In the 1st argument arg_1, if one flag from 3-2-1-1～3-2-1-34 is assigned clear value. The following two procedures are implemented:
             - Verify that the callback function is not called even if the signal corresponding to the cleared flag changed.
             - Verify that there is no callback notification for an incorrectly cleared flag; even the other 33 signals changed. 
             (Callback notification for other signal changes occur)
