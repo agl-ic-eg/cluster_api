@@ -129,10 +129,10 @@ The test items to be implemented are as follows：
         - In the 1st argument arg_1, If 0 is specified, confirm that the callback function is not called even if any of the 34 signals changed as described in 3-2-1 TellTale.
         - In the 1st argument arg_1, if flags other than following flags 3-2-1-1～3-2-1-34 are set、Confirm that the callback function is not called when any of the 34 signals changed as described in 3-2-1 TellTale.
         - In the 2nd argument addr, if NULL is specified: Confirm that an error occurs.
-        - In the 1st argument arg_1, if 3-2-1-1～3-2-1-34 are specified value sets one : The following two procedures are implemented:
-            - 指定したフラグに該当するシグナルが変化した時だけコールバック関数が呼ばれることを確認する。
-            - 他の33種のシグナルが変化してもコールバック関数が呼ばれないことを確認する。
-        - In the 1st argument arg_1, 3-2-1-1～3-2-1-34 のいずれか1つのフラグだけクリアした値を指定した場合について以下の2つを実施する。
-            - クリアしたフラグに該当するシグナルが変化しても、コールバック関数が呼ばれないことを確認する。
-            - 他の33種のシグナルが変化しても、誤ってクリアしたフラグに関するコールバック通知が行われないことを確認する。  
-            (他のシグナル変化へのコールバック通知は行われること)
+        - In the 1st argument arg_1, if 3-2-1-1～3-2-1-34 are specified set values: The following two procedures are implemented:
+            - Confirm that the callback function is called only when the signal corresponding to the specified flag changed.
+            - Confirm that the callback function is not called, even the other 33 signals changed.
+        - In the 1st argument arg_1, if one flag from 3-2-1-1～3-2-1-34 are specified clear value, The following two procedures are implemented:
+            - Verify that the callback function is not called even if the signal corresponding to the cleared flag changes.
+            - Verify that there is no callback notification for an incorrectly cleared flag, even the other 33 signals changed. 
+            (Callback notification for other signal changes occur)
