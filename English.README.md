@@ -30,7 +30,7 @@ $ ./client_test
 
 ***************** CUNIT CONSOLE - MAIN MENU ******************************
 (R)un  (S)elect  (L)ist  (A)ctivate  (F)ailures  (O)ptions  (H)elp  (Q)uit
-Enter command: ★(r)to run all test automatically ★(q)to End
+Enter command: ★(r)to run all test automatically ★(q)to terminate
 ```
 
 # Source configuration
@@ -69,33 +69,33 @@ When ./buildtest.sh run, Build shows as follow:
 
 - API function which becomes I/F for application Implemented according to IC-Service_API_rev0.4.docx.
 - The main implementation of the process is to manage the data sent from the IC-Service server. When calling API from the application, extract only the relevant data from the managed data.
-- In addition to IC-Service_API_rev0.4.docx, the following two APIs have been additionally implemented：
+- In addition to IC-Service_API_rev0.4.docx, the following two APIs have also been implemented：
     - bool clusterInit(void)
         - Initialization process for using the Cluster API.
-        - This API connects to the server for IC-Service, so it is assumed that the server has already started.
-        - Return a bool value with true if the operation was successful.
+        - This API connects to the IC-Service server, assuming that the server has already started.
+        - Return true bool value if processing successfully.
     - bool clusterTerm(void)
         - Termination　Cluster API Process.
         - Used to disconnect from the IC-Service server.
-        - Return a bool value with true if the operation was successful。
-- Apps can include cluster_api.h and link with libcluster_api.so to call various APIs.
+        - Return true bool value if processing successfully.
+- Applications include cluster_api.h, and link with libcluster_api.so can call every API.
 
 # client_test Test content
 
-Perform operation tests for various APIs of Cluster API. The configuration is as follows：
+Implement operation tests for every API of Cluster API. The configuration is as follows：
 
-- The test consists of two executable files, client_test and dummy_server：
-    - client_test : Cluster API Test Body
-    - dummy_server : Mock IC-Service server for Cluster API testing
-- When running The test, only should run client_test.
+- The test configures two executable files; client_test and dummy_server：
+    - client_test: Cluster API Test Body
+    - dummy_server: Mock IC-Service server used for Cluster API testing
+- When executing the test, only execute client_test.
 - dummy_server is automatically started within client_test.
 - The wait time for dummy_server to start and for dummy_server to send is 10 msec. 
-  (Since it is asynchronous with another process, it does not work as intended if there is no wait)
-- client_test is an automatic test program implemented using CUnit, All item tests and unit item test are both possible according to CUnit specifications.
-- ※In rare cases, a test may fail due to timing of inter-process communication.  
-(Test all 156 items 20 times, returnt 1 item FAIL)
+  (Since it is asynchronous with another process, it does not work as intended without waiting all time)
+- client_test is an automated test program implemented using CUnit. All item tests and unit item tests are both possible according to CUnit specifications.
+- ※ The test may rarely fail due to the timing of inter-process communication. 
+(Test all 156 items 20 times, return 1 item FAIL)
 
-The test items to be implemented are as follows：
+Implementation of items test is as follows：
 
 1. InitAndTerm (5 Items)
     - Verify that clusterInit () and clusterTerm () work as intended：
