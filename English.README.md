@@ -106,33 +106,33 @@ The test items to be implemented are as follows：
             - Without calling clusterInit(), call clusterTerm().
         - Confirm an error occurs when calling clusterInit() when the IC-Service server does not exist.
 2. Telltale (52 Items)
-    - Confirm the intended value can be obtained with each APIs as described in 3-4 Telltale of IC-Service_API_rev0.4.docx:
+    - Confirm each APIs can obtain intended value as described in 3-4 Telltale of IC-Service_API_rev0.4.docx:
         - Each API Implemented one pattern at a time.
 3. ShiftPosition (2 Items)
-    - Confirm the intended value can be obtained with each APIs as described in 3-5 ShiftPosition of IC-Service_API_rev0.4.docx: 
+    - Confirm each APIs can obtain intended value as described in 3-5 ShiftPosition of IC-Service_API_rev0.4.docx: 
         - Each API Implemented one pattern at a time.
 4. Speed (2 Items)
-    -  Confirm the intended value can be obtained with each APIs as described in 3-6 Speed of IC-Service_API_rev0.4.docx: 
+    -  Confirm each APIs can obtain intended value as described in 3-6 Speed of IC-Service_API_rev0.4.docx: 
         - Each API Implemented one pattern at a time.
 5. Tacho (1 Item)
-    - Confirm the intended value can be obtained with each APIs as described in 3-7 Tacho of IC-Service_API_rev0.4.docx: 
+    - Confirm each APIs can obtain intended value as described in 3-7 Tacho of IC-Service_API_rev0.4.docx: 
         - Each API Implemented one pattern at a time.
 6. TripComputer (20 Items)
-    -  Confirm the intended value can be obtained with each APIs as described in 3-8 TripComputer of IC-Service_API_rev0.4.docx: 。
+    -  Confirm each APIs can obtain intended value as described in 3-8 TripComputer of IC-Service_API_rev0.4.docx:
         - Each API Implemented one pattern at a time.
 7. RegisterAndNotify (74 Items)
-    - IC-Service_API_rev0.4.docx の 3-9 Register/Notify にある registerIcHmi()の動作が意図通りであることを確認する。
-        - 第1引数 arg_1 に IC_HMI_TT_ALL を指定した時のテスト。
-            - 3-2-1 TellTaleに記載された34種のどのシグナルが変化してもコールバック関数が呼ばれることを確認する。
-            - 3-2-1 TellTaleに記載された34種いずれのシグナルも変化していなければコールバック関数が呼ばれないことを確認する。
-            - 3-2-1 TellTaleに記載された34種のシグナル以外が変化してもコールバック関数が呼ばれないことを確認する。
-        - 第1引数 arg_1 に 0 を指定した場合に、3-2-1 TellTaleに記載された34種のどのシグナルが変化してもコールバック関数が呼ばれないことを確認する。
-        - 第1引数 arg_1 に 3-2-1-1～3-2-1-34 に示されたフラグ以外全てをセットした場合に、3-2-1 TellTaleに記載された34種のどのシグナルが変化してもコールバック関数が呼ばれないことを確認する。
-        - 第2引数 addr にNULLが指定された場合にエラーとなることを確認する。
-        - 第1引数 arg_1 に 3-2-1-1～3-2-1-34 のいずれか1つをセットした値を指定した場合について以下の2つを実施する。
+    - Confirm registerIcHmi() in 3-9 Register/Notify of IC-Service_API_rev0.4.docx works as intended:
+        - In the 1st argument arg_1, IC_HMI_TT_ALL Test when specified:
+            - Confirm that the callback function is called whenever any of the 34 signals changed as described in 3-2-1 TellTale.
+            - Confirm that the callback function is not called if none of the 34 signals have changed as described in 3-2-1 TellTale.
+            - Confirm that the callback function is not called even if other signal than 34 signals have changed as described in 3-2-1 TellTale.
+        - In the 1st argument arg_1, If 0 is specified, confirm that the callback function is not called even if any of the 34 signals changed as described in 3-2-1 TellTale.
+        - In the 1st argument arg_1, if flags other than following flags 3-2-1-1～3-2-1-34 are set、Confirm that the callback function is not called when any of the 34 signals changed as described in 3-2-1 TellTale.
+        - In the 2nd argument addr, if NULL is specified: Confirm that an error occurs.
+        - In the 1st argument arg_1, if 3-2-1-1～3-2-1-34 are specified value sets one : The following two procedures are implemented:
             - 指定したフラグに該当するシグナルが変化した時だけコールバック関数が呼ばれることを確認する。
             - 他の33種のシグナルが変化してもコールバック関数が呼ばれないことを確認する。
-        - 第1引数 arg_1 に 3-2-1-1～3-2-1-34 のいずれか1つのフラグだけクリアした値を指定した場合について以下の2つを実施する。
+        - In the 1st argument arg_1, 3-2-1-1～3-2-1-34 のいずれか1つのフラグだけクリアした値を指定した場合について以下の2つを実施する。
             - クリアしたフラグに該当するシグナルが変化しても、コールバック関数が呼ばれないことを確認する。
             - 他の33種のシグナルが変化しても、誤ってクリアしたフラグに関するコールバック通知が行われないことを確認する。  
             (他のシグナル変化へのコールバック通知は行われること)
