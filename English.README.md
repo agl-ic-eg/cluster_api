@@ -98,28 +98,28 @@ Perform operation tests for various APIs of Cluster API. The configuration is as
 The test items to be implemented are as follows：
 
 1. InitAndTerm (5 Items)
-    - clusterInit()とclusterTerm()が意図通り動作することを確認する。
-        - IC-Service用サーバが存在する状態でclusterInit()とclusterTerm()を順に呼ぶ時の動作を確認する(正常系)
-        - APIの呼び出し順誤りでエラーになることを確認する。
-            - clusterInit()2連続呼び出し。
-            - clusterInit()後、clusterTerm()を2連続呼び出し。
-            - clusterInit()を呼ばずにclusterTerm()を呼び出し。
-        - IC-Service用サーバが存在しない状態でのclusterInit()呼び出しでエラーになることを確認する。
+    - Verify that clusterInit () and clusterTerm () work as intended：
+        - Confirm the operation when calling clusterInit() and clusterTerm() sequentially when the IC-Service server exists (normal system).
+        - Confirm that an error occurs due to an incorrect API call order:
+            - Call clusterInit() 2 times.
+            - Call clusterInit() then, clusterTerm() 2 times.
+            - Without calling clusterInit(), call clusterTerm().
+        - Confirm an error occurs when calling clusterInit() when the IC-Service server does not exist.
 2. Telltale (52 Items)
-    - IC-Service_API_rev0.4.docx の 3-4 Telltale に記載されている各種APIで意図通りの値が取得できることを確認する。
-        - 各API 1パターンずつ実施。
+    - Confirm the intended value can be obtained with each APIs as described in 3-4 Telltale of IC-Service_API_rev0.4.docx:
+        - Each API Implemented one pattern at a time.
 3. ShiftPosition (2 Items)
-    - IC-Service_API_rev0.4.docx の 3-5 ShiftPosition に記載されている各種APIで意図通りの値が取得できることを確認する。
-        - 各API 1パターンずつ実施。
+    - Confirm the intended value can be obtained with each APIs as described in 3-5 ShiftPosition of IC-Service_API_rev0.4.docx: 
+        - Each API Implemented one pattern at a time.
 4. Speed (2 Items)
-    - IC-Service_API_rev0.4.docx の 3-6 Speed に記載されている各種APIで意図通りの値が取得できることを確認する。
-        - 各API 1パターンずつ実施。
+    -  Confirm the intended value can be obtained with each APIs as described in 3-6 Speed of IC-Service_API_rev0.4.docx: 
+        - Each API Implemented one pattern at a time.
 5. Tacho (1 Item)
-    - IC-Service_API_rev0.4.docx の 3-7 Tacho に記載されている各種APIで意図通りの値が取得できることを確認する。
-        - 各API 1パターンずつ実施。
+    - Confirm the intended value can be obtained with each APIs as described in 3-7 Tacho of IC-Service_API_rev0.4.docx: 
+        - Each API Implemented one pattern at a time.
 6. TripComputer (20 Items)
-    - IC-Service_API_rev0.4.docx の 3-8 TripComputer に記載されている各種APIで意図通りの値が取得できることを確認する。
-        - 各API 1パターンずつ実施。
+    -  Confirm the intended value can be obtained with each APIs as described in 3-8 TripComputer of IC-Service_API_rev0.4.docx: 。
+        - Each API Implemented one pattern at a time.
 7. RegisterAndNotify (74 Items)
     - IC-Service_API_rev0.4.docx の 3-9 Register/Notify にある registerIcHmi()の動作が意図通りであることを確認する。
         - 第1引数 arg_1 に IC_HMI_TT_ALL を指定した時のテスト。
