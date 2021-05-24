@@ -1,3 +1,6 @@
+# Copyright (c) 2021, Nippon Seiki Co., Ltd.
+# SPDX-License-Identifier: Apache-2.0
+
 project(cluster_api C)
 
 cmake_minimum_required(VERSION 2.8)
