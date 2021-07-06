@@ -6,7 +6,7 @@ add_library(${TARGET_NAME} SHARED
     cluster_api.c
 )
 
-pkg_check_modules(IPC REQUIRED ipc)
+pkg_check_modules(IPC REQUIRED cluster_ipc)
 
 # Include directories
 target_include_directories(${TARGET_NAME} PRIVATE

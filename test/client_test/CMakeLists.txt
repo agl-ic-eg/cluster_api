@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-pkg_check_modules(IPC REQUIRED ipc)
+pkg_check_modules(IPC REQUIRED cluster_ipc)
 
 # use the variable <RESULTNAME>_INCLUDE_DIRS to get include paths
 include_directories(

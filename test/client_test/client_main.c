@@ -23,7 +23,7 @@
 #include <CUnit/CUnit.h>
 #include <CUnit/Console.h>
 
-#include <ipc.h>
+#include <cluster_ipc.h>
 #include <cluster_api.h>
 
 #include "client_test_common.h"

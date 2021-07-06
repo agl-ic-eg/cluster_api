@@ -6,6 +6,6 @@ Name: @TARGET_NAME@
 Description: cluster api library using ipc library
 Version: @CLUSTER_API_LIBRARY_VERSION@
 
-Requires: ipc
+Requires:cluster_ipc
 Cflags: -I${includedir}
 Libs: -L${libdir} -lcluster_api

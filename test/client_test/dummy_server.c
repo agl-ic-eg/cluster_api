@@ -25,7 +25,7 @@
 #include <sys/un.h>
 #include <sys/epoll.h>
 
-#include <ipc.h>
+#include <cluster_ipc.h>
 
 #define CLUSTER_TEST_EPOLL_WAIT_NUM (2)
 

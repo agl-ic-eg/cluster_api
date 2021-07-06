@@ -20,7 +20,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include <ipc.h>
+#include <cluster_ipc.h>
 
 #include <cluster_api.h>
 #include <cluster_api_internal.h>

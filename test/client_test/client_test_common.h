@@ -19,7 +19,7 @@
 #define CLIENT_TEST_COMMON_H
 
 #include <unistd.h>
-#include <ipc.h>
+#include <cluster_ipc.h>
 
 #define IPC_TEST_DOMAIN_PATH "./"
 
